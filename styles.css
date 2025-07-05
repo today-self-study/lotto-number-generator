@@ -1,0 +1,465 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.2); }
+    to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.4); }
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #e0e0e0;
+    font-weight: 300;
+}
+
+/* Lotto Machine Styles */
+.lotto-machine {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 30px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.lotto-machine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Machine Top Lights */
+.machine-top {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff4757;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    animation: blink 1.5s infinite;
+}
+
+.light-2 {
+    background: #ffa502;
+    box-shadow: 0 0 10px rgba(255, 165, 2, 0.5);
+    animation-delay: 0.5s;
+}
+
+.light-3 {
+    background: #2ed573;
+    box-shadow: 0 0 10px rgba(46, 213, 115, 0.5);
+    animation-delay: 1s;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* Number Display */
+.number-display {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ball-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.lotto-ball {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ff6b6b, #ee5a52);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lotto-ball:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 24px rgba(0,0,0,0.3),
+        inset 0 2px 4px rgba(255,255,255,0.3);
+}
+
+.lotto-ball::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 30%;
+    height: 30%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.6), transparent);
+    border-radius: 50%;
+}
+
+.lotto-ball .number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+/* Ball Color Variations */
+.lotto-ball:nth-child(1) { background: linear-gradient(145deg, #ff6b6b, #ee5a52); }
+.lotto-ball:nth-child(2) { background: linear-gradient(145deg, #4ecdc4, #44a08d); }
+.lotto-ball:nth-child(3) { background: linear-gradient(145deg, #45b7d1, #3498db); }
+.lotto-ball:nth-child(4) { background: linear-gradient(145deg, #f39c12, #e67e22); }
+.lotto-ball:nth-child(5) { background: linear-gradient(145deg, #9b59b6, #8e44ad); }
+.lotto-ball:nth-child(6) { background: linear-gradient(145deg, #2ecc71, #27ae60); }
+
+/* Bonus Ball */
+.bonus-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.bonus-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.bonus-ball {
+    background: linear-gradient(145deg, #f1c40f, #f39c12) !important;
+    border: 3px solid #fff;
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.2),
+        inset 0 2px 4px rgba(255,255,255,0.3),
+        0 0 20px rgba(241, 196, 15, 0.3);
+}
+
+/* Control Panel */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.generate-btn, .reset-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.generate-btn {
+    background: linear-gradient(145deg, #2ecc71, #27ae60);
+    color: white;
+    box-shadow: 0 8px 16px rgba(46, 204, 113, 0.3);
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(46, 204, 113, 0.4);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
+
+.reset-btn {
+    background: linear-gradient(145deg, #95a5a6, #7f8c8d);
+    color: white;
+    box-shadow: 0 8px 16px rgba(149, 165, 166, 0.3);
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(149, 165, 166, 0.4);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Stats Section */
+.stats-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-item {
+    text-align: center;
+    color: #fff;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* History Section */
+.history-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.history-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+}
+
+.history-numbers {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.history-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #667eea, #764ba2);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.history-bonus {
+    background: linear-gradient(145deg, #f1c40f, #f39c12) !important;
+    border: 2px solid #fff;
+    margin-left: 10px;
+}
+
+.no-history {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Classes */
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
+
+.spin {
+    animation: spin 1s linear;
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.generating .lotto-ball {
+    animation: spin 2s linear infinite;
+}
+
+.generating .lotto-ball .number {
+    animation: bounce 0.5s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .lotto-machine {
+        padding: 20px;
+    }
+    
+    .ball-container {
+        gap: 10px;
+    }
+    
+    .lotto-ball {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .lotto-ball .number {
+        font-size: 1.4rem;
+    }
+    
+    .control-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .generate-btn, .reset-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .stats-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ball-container {
+        gap: 8px;
+    }
+    
+    .lotto-ball {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .lotto-ball .number {
+        font-size: 1.2rem;
+    }
+    
+    .bonus-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+} 
